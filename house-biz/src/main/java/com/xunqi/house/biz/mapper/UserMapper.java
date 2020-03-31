@@ -19,4 +19,9 @@ public interface UserMapper {
      */
     List<User> findAll();
 
+    int insert(User account);
+
+    int delete(String email);
+
+    int update(User userUpdate);
 }

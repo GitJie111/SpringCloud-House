@@ -4,6 +4,7 @@ import com.xunqi.house.biz.service.UserService;
 import com.xunqi.house.common.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -37,4 +38,8 @@ public class HelloController {
         return "homepage/index";
     }
 
+    @GetMapping(value = "/register")
+    public String register() {
+        return "user/accounts/register";
+    }
 }

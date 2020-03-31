@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * (User)实体类
@@ -19,49 +21,36 @@ import java.io.Serializable;
 @Builder
 public class User implements Serializable {
     private static final long serialVersionUID = -79109494496006938L;
-    /**
-    * 主键
-    */
-    private Object id;
-    /**
-    * 姓名
-    */
-    private String name;
-    /**
-    * 手机号
-    */
-    private String phone;
-    /**
-    * 电子邮件
-    */
+    private Long id;
+
     private String email;
-    /**
-    * 自我介绍
-    */
-    private String aboutme;
-    /**
-    * 经过MD5加密的密码
-    */
+
+    private String phone;
+
+    private String name;
+
     private String passwd;
-    /**
-    * 头像图片
-    */
-    private String avatar;
-    /**
-    * 1:普通用户，2:房产经纪人
-    */
-    private Object type;
-    /**
-    * 创建时间
-    */
-    private Object createTime;
-    /**
-    * 是否启用,1启用，0停用
-    */
-    private Object enable;
-    /**
-    * 所属经纪机构
-    */
-    private Integer agencyId;
+
+    private String confirmPasswd;
+
+    private Integer type;//普通用户1，经纪人2
+
+    private Date   createTime;
+
+    private Integer enable;
+
+    private String  avatar;
+
+    private MultipartFile avatarFile;
+
+    private String newPassword;
+
+    private String key;
+
+    private Long   agencyId;
+
+    private String aboutme;
+
+    private String agencyName;
 
 }
