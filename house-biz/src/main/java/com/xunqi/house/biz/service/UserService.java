@@ -31,4 +31,12 @@ public interface UserService {
      * @return
      */
     boolean enable(String key);
+
+    /**
+     * 用户名和密码验证
+     * @param username
+     * @param password
+     * @return
+     */
+    User auth(String username, String password);
 }

@@ -24,4 +24,11 @@ public interface UserMapper {
     int delete(String email);
 
     int update(User userUpdate);
+
+    /**
+     * 查询用户
+     * @param user
+     * @return
+     */
+    List<User> selectUserByQuery(User user);
 }

@@ -25,7 +25,7 @@ public class HashUtils {
 
 
     public static void main(String[] args) {
-        System.out.println(encryPassword("123456"));
+        System.out.println(encryPassword("12345678"));
 
     }
 }

@@ -39,6 +39,9 @@ public class UserServiceImpl implements UserService {
     @Resource
     private MailService mailService;
 
+    @Value("${file.prefix}")
+    private String imgPrefix;
+
 
     @Override
     public List<User> findAll() {
@@ -65,6 +68,29 @@ public class UserServiceImpl implements UserService {
     public boolean enable(String key) {
 
         return mailService.enable(key);
+    }
+
+    @Override
+    public User auth(String username, String password) {
+
+        User user = new User();
+        user.setEmail(username);
+        user.setPasswd(HashUtils.encryPassword(password));
+        user.setEnable(1);
+
+        List<User> list = getUserByQuery(user);
+
+        return list.get(0);
+    }
+
+    private List<User> getUserByQuery(User user) {
+
+        List<User> list = userMapper.selectUserByQuery(user);
+        list.forEach(u ->{
+            u.setAvatar(imgPrefix + u.getAvatar());
+        });
+
+        return list;
     }
 
 
