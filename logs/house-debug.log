@@ -1,0 +1,15 @@
+2020-03-31 10:15:47.143  [http-nio-8090-exec-1] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-1cid - ==>  Preparing: SELECT id, name, phone, email, aboutme, passwd, avatar, type, create_time, enable, agency_id FROM user 
+2020-03-31 10:15:47.171  [http-nio-8090-exec-1] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-1cid - ==> Parameters: 
+2020-03-31 10:15:47.221  [http-nio-8090-exec-1] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-1cid - <==      Total: 11
+2020-03-31 10:30:58.246  [http-nio-8090-exec-1] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-1cid - ==>  Preparing: SELECT id, name, phone, email, aboutme, passwd, avatar, type, create_time, enable, agency_id FROM user 
+2020-03-31 10:30:58.273  [http-nio-8090-exec-1] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-1cid - ==> Parameters: 
+2020-03-31 10:30:58.301  [http-nio-8090-exec-1] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-1cid - <==      Total: 11
+2020-03-31 10:31:50.130  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-4cid - ==>  Preparing: SELECT id, name, phone, email, aboutme, passwd, avatar, type, create_time, enable, agency_id FROM user 
+2020-03-31 10:31:50.130  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-4cid - ==> Parameters: 
+2020-03-31 10:31:50.146  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-4cid - <==      Total: 11
+2020-03-31 10:32:15.189  [http-nio-8090-exec-9] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-9cid - ==>  Preparing: SELECT id, name, phone, email, aboutme, passwd, avatar, type, create_time, enable, agency_id FROM user 
+2020-03-31 10:32:15.190  [http-nio-8090-exec-9] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-9cid - ==> Parameters: 
+2020-03-31 10:32:15.194  [http-nio-8090-exec-9] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-9cid - <==      Total: 11
+2020-03-31 10:35:41.353  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-2cid - ==>  Preparing: SELECT id, name, phone, email, aboutme, passwd, avatar, type, create_time, enable, agency_id FROM user 
+2020-03-31 10:35:41.383  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-2cid - ==> Parameters: 
+2020-03-31 10:35:41.416  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.findAll:] http-nio-8090-exec-2cid - <==      Total: 11

@@ -22,7 +22,7 @@ public class DruidConfig {
 
     @ConfigurationProperties(prefix="spring.druid")
     @Bean(initMethod="init",destroyMethod="close")
-    public DruidDataSource dataSource(Filter statFilter) throws SQLException {
+    public DruidDataSource dataSource(Filter statFilter) throws SQLException{
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setProxyFilters(Lists.newArrayList(statFilter()));
         return dataSource;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<#assign base=springMacroRequestContext.contextPath />
 <html lang="en-US">
 <@common.header/>
 
@@ -23,12 +23,12 @@
             <section id="500">
                 <div class="error-page">
                     <div class="title">
-                        <img alt="" src="/static/assets/img/error-page-background.png" class="top">
+                        <img alt="" src="${base}/static/assets/img/error-page-background.png" class="top">
                         <header>500</header>
-                        <img alt="" src="/static/assets/img/error-page-background.png" class="bottom">
+                        <img alt="" src="${base}/static/assets/img/error-page-background.png" class="bottom">
                     </div>
                     <h2 class="no-border">Internal Server Error</h2>
-                    <a  class="link-arrow back" href="/index" >返回首页</a>
+                    <a  class="link-arrow back" href="${base}/index" >返回首页</a>
                 </div>
             </section>
         </div><!-- /.container -->

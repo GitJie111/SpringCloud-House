@@ -1,3 +1,4 @@
+<#assign base=springMacroRequestContext.contextPath />
 <!DOCTYPE html>
 
 <html lang="en-US">
@@ -25,7 +26,7 @@
                         <a href="property-detail.html" class="link-arrow">Read More</a>
                     </div>
                 </div>
-                <img alt="" src="/static/assets/img/slide-01.jpg">
+                <img alt="" src="${base}/static/assets/img/slide-01.jpg">
             </div>
             <div class="slide">
                 <div class="container">
@@ -39,7 +40,7 @@
                         <a href="property-detail.html" class="link-arrow">Read More</a>
                     </div>
                 </div>
-                <img alt="" src="/static/assets/img/slide-02.jpg">
+                <img alt="" src="${base}/static/assets/img/slide-02.jpg">
             </div>
             <div class="slide">
                 <div class="container">
@@ -53,7 +54,7 @@
                         <a href="property-detail.html" class="link-arrow">Read More</a>
                     </div>
                 </div>
-                <img alt="" src="/static/assets/img/slide-03.jpg">
+                <img alt="" src="${base}/static/assets/img/slide-03.jpg">
             </div>
         </div>
     </div>
@@ -151,7 +152,7 @@
                     <blockquote class="testimonial">
                         <figure>
                             <div class="image">
-                                <img alt="" src="/static/assets/img/client-01.jpg">
+                                <img alt="" src="${base}/static/assets/img/client-01.jpg">
                             </div>
                         </figure>
                         <aside class="cite">
@@ -162,7 +163,7 @@
                     <blockquote class="testimonial">
                         <figure>
                             <div class="image">
-                                <img alt="" src="/static/assets/img/client-01.jpg">
+                                <img alt="" src="${base}/static/assets/img/client-01.jpg">
                             </div>
                         </figure>
                         <aside class="cite">
@@ -177,11 +178,11 @@
             <div class="container">
                 <header class="section-title"><h2>Our Partners</h2></header>
                 <div class="logos">
-                    <div class="logo"><a href=""><img src="/static/assets/img/logo-partner-01.png" alt=""></a></div>
-                    <div class="logo"><a href=""><img src="/static/assets/img/logo-partner-02.png" alt=""></a></div>
-                    <div class="logo"><a href=""><img src="/static/assets/img/logo-partner-03.png" alt=""></a></div>
-                    <div class="logo"><a href=""><img src="/static/assets/img/logo-partner-04.png" alt=""></a></div>
-                    <div class="logo"><a href=""><img src="/static/assets/img/logo-partner-05.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="${base}/static/assets/img/logo-partner-01.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="${base}/static/assets/img/logo-partner-02.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="${base}/static/assets/img/logo-partner-03.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="${base}/static/assets/img/logo-partner-04.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="${base}/static/assets/img/logo-partner-05.png" alt=""></a></div>
                 </div>
             </div><!-- /.container -->
         </section><!-- /#partners -->
