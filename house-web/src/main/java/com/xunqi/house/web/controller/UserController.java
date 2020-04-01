@@ -4,7 +4,7 @@ import com.xunqi.house.biz.service.UserService;
 import com.xunqi.house.common.constants.CommonConstants;
 import com.xunqi.house.common.pojo.User;
 import com.xunqi.house.common.result.ResultMsg;
-import com.xunqi.house.util.UserHelper;
+import com.xunqi.house.web.util.UserHelper;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 /**
  * @Created with IntelliJ IDEA.
@@ -91,8 +91,9 @@ public class UserController {
             return "redirect:/account/signin?target=" + target + "&username=" +
                     username + "&" + ResultMsg.errorMsg("用户名或密码错误").asUrlParams();
         } else {
-            request.getSession().setAttribute(CommonConstants.USER_ATTRIBUTE,user);
-            request.getSession().setAttribute(CommonConstants.PLAIN_USER_ATTRIBUTE,user);
+            HttpSession session = request.getSession(true);
+            session.setAttribute(CommonConstants.USER_ATTRIBUTE,user);
+            session.setAttribute(CommonConstants.PLAIN_USER_ATTRIBUTE,user);
             return StringUtils.isNoneBlank(target) ? "redirect:" + target : "redirect:/index";
         }
     }

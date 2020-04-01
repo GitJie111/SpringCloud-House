@@ -1,47 +1,6 @@
-2020-03-31 18:00:35.306  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-7cid - ==>  Preparing: update user SET enable = ? where email = ? 
-2020-03-31 18:00:35.314  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-7cid - ==> Parameters: 1(Integer), hjl1468041654@163.com(String)
-2020-03-31 18:00:35.320  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-7cid - <==    Updates: 1
-2020-03-31 18:00:35.327  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-7cid - ==>  Preparing: DELETE FROM user WHERE email = ? 
-2020-03-31 18:00:35.331  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-7cid - ==> Parameters: hjl1468041654@163.com(String)
-2020-03-31 18:00:35.334  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-7cid - <==    Updates: 1
-2020-03-31 18:07:28.622  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-2cid - ==>  Preparing: INSERT INTO USER ( name, phone, email, aboutme, passwd, avatar, type, create_time, enable ) VALUES (?,?,?,?,?,?,?,?,?) 
-2020-03-31 18:07:28.660  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-2cid - ==> Parameters: 魔兽(String), 15580220501(String), 1468041654@qq.com(String), 12345678(String), 3ac17a28fb14febd639abcca3a4cac46(String), (String), 1(Integer), 2020-03-31 18:07:28.593(Timestamp), 0(Integer)
-2020-03-31 18:07:28.666  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-2cid - <==    Updates: 1
-2020-03-31 18:10:24.091  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-5cid - ==>  Preparing: INSERT INTO USER ( name, phone, email, aboutme, passwd, avatar, type, create_time, enable ) VALUES (?,?,?,?,?,?,?,?,?) 
-2020-03-31 18:10:24.119  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-5cid - ==> Parameters: ajax(String), 15580220501(String), 1468041654@qq.com(String), dsada(String), 3ac17a28fb14febd639abcca3a4cac46(String), (String), 1(Integer), 2020-03-31 18:10:24.072(Timestamp), 0(Integer)
-2020-03-31 18:10:24.121  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-5cid - <==    Updates: 1
-2020-03-31 18:11:18.185  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-8cid - ==>  Preparing: update user SET enable = ? where email = ? 
-2020-03-31 18:11:18.193  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-8cid - ==> Parameters: 1(Integer), 1468041654@qq.com(String)
-2020-03-31 18:11:18.198  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-8cid - <==    Updates: 1
-2020-03-31 18:11:18.209  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-8cid - ==>  Preparing: DELETE FROM user WHERE email = ? 
-2020-03-31 18:11:18.211  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-8cid - ==> Parameters: 1468041654@qq.com(String)
-2020-03-31 18:11:18.213  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-8cid - <==    Updates: 1
-2020-03-31 18:44:51.586  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-2cid - ==>  Preparing: SELECT * FROM user WHERE email = #{email) AND passwd = #{passwd) AND enable = #{enable) 
-2020-03-31 18:44:51.950  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-2cid - ==> Parameters: 
-2020-03-31 18:47:58.514  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-5cid - ==>  Preparing: select * from user WHERE email = ? and passwd = ? and enable = ? 
-2020-03-31 18:47:58.605  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-5cid - ==> Parameters: spring_boot@163.com(String), 3ac17a28fb14febd639abcca3a4cac46(String), 1(Integer)
-2020-03-31 18:47:58.650  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-5cid - <==      Total: 0
-2020-03-31 18:48:34.890  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-2cid - ==>  Preparing: select * from user WHERE email = ? and passwd = ? and enable = ? 
-2020-03-31 18:48:34.896  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-2cid - ==> Parameters: admin@qq.com(String), 3ac17a28fb14febd639abcca3a4cac46(String), 1(Integer)
-2020-03-31 18:48:34.902  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-2cid - <==      Total: 0
-2020-03-31 18:50:32.858  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-8cid - ==>  Preparing: INSERT INTO USER ( name, phone, email, aboutme, passwd, avatar, type, create_time, enable ) VALUES (?,?,?,?,?,?,?,?,?) 
-2020-03-31 18:50:32.887  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-8cid - ==> Parameters: Jerrys(String), 15580220501(String), 1468041654@qq.com(String), 1111(String), 3ac17a28fb14febd639abcca3a4cac46(String), (String), 1(Integer), 2020-03-31 18:50:32.827(Timestamp), 0(Integer)
-2020-03-31 18:50:32.907  [http-nio-8090-exec-8] DEBUG [com.xunqi.house.biz.mapper.UserMapper.insert:] http-nio-8090-exec-8cid - <==    Updates: 1
-2020-03-31 18:51:09.385  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-5cid - ==>  Preparing: update user SET enable = ? where email = ? 
-2020-03-31 18:51:09.401  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-5cid - ==> Parameters: 1(Integer), 1468041654@qq.com(String)
-2020-03-31 18:51:09.422  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.update:] http-nio-8090-exec-5cid - <==    Updates: 1
-2020-03-31 18:51:09.454  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-5cid - ==>  Preparing: DELETE FROM user WHERE email = ? 
-2020-03-31 18:51:09.457  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-5cid - ==> Parameters: 1468041654@qq.com(String)
-2020-03-31 18:51:09.463  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.delete:] http-nio-8090-exec-5cid - <==    Updates: 1
-2020-03-31 18:52:05.332  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-4cid - ==>  Preparing: select * from user WHERE email = ? and passwd = ? and enable = ? 
-2020-03-31 18:52:05.334  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-4cid - ==> Parameters: 1468041654@qq.com(String), 3ac17a28fb14febd639abcca3a4cac46(String), 1(Integer)
-2020-03-31 18:52:05.344  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-4cid - <==      Total: 0
-2020-03-31 18:53:01.638  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-7cid - ==>  Preparing: select * from user WHERE email = ? and passwd = ? and enable = ? 
-2020-03-31 18:53:01.643  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-7cid - ==> Parameters: 1468041654@qq.com(String), 3ac17a28fb14febd639abcca3a4cac46(String), 1(Integer)
-2020-03-31 18:53:01.645  [http-nio-8090-exec-7] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-7cid - <==      Total: 0
-2020-03-31 18:53:30.270  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-5cid - ==>  Preparing: select * from user WHERE email = ? and passwd = ? and enable = ? 
-2020-03-31 18:53:30.273  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-5cid - ==> Parameters: spring_boot@163.com(String), 2f0610b8f15080987293497c68d4d9f5(String), 1(Integer)
-2020-03-31 18:53:30.277  [http-nio-8090-exec-5] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-5cid - <==      Total: 0
-2020-03-31 18:55:40.669  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-4cid - ==>  Preparing: select * from user WHERE email = ? and passwd = ? and enable = ? 
-2020-03-31 18:55:40.966  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-4cid - ==> Parameters: HJL1468041654@qq.com(String), 3ac17a28fb14febd639abcca3a4cac46(String), 1(Integer)
-2020-03-31 18:55:41.154  [http-nio-8090-exec-4] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-4cid - <==      Total: 1
+2020-04-01 09:43:38.211  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-2cid - ==>  Preparing: select * from user WHERE email = ? and passwd = ? and enable = ? 
+2020-04-01 09:43:38.256  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-2cid - ==> Parameters: spring_boot@163.com(String), 3ac17a28fb14febd639abcca3a4cac46(String), 1(Integer)
+2020-04-01 09:43:38.273  [http-nio-8090-exec-2] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-2cid - <==      Total: 0
+2020-04-01 09:44:13.371  [http-nio-8090-exec-9] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-9cid - ==>  Preparing: select * from user WHERE email = ? and passwd = ? and enable = ? 
+2020-04-01 09:44:13.371  [http-nio-8090-exec-9] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-9cid - ==> Parameters: spring_boot@163.com(String), 2f0610b8f15080987293497c68d4d9f5(String), 1(Integer)
+2020-04-01 09:44:13.373  [http-nio-8090-exec-9] DEBUG [com.xunqi.house.biz.mapper.UserMapper.selectUserByQuery:] http-nio-8090-exec-9cid - <==      Total: 0

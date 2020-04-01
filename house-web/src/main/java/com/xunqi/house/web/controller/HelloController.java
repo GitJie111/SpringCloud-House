@@ -32,14 +32,4 @@ public class HelloController {
         return "hello";
     }
 
-
-    @RequestMapping(value = "/index")
-    public String index() {
-        return "homepage/index";
-    }
-
-    @GetMapping(value = "/register")
-    public String register() {
-        return "user/accounts/register";
-    }
 }

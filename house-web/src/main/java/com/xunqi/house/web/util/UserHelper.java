@@ -1,4 +1,4 @@
-package com.xunqi.house.util;
+package com.xunqi.house.web.util;
 
 import com.xunqi.house.common.pojo.User;
 import com.xunqi.house.common.result.ResultMsg;
