@@ -4,6 +4,7 @@ import com.xunqi.house.biz.service.UserService;
 import com.xunqi.house.common.constants.CommonConstants;
 import com.xunqi.house.common.pojo.User;
 import com.xunqi.house.common.result.ResultMsg;
+import com.xunqi.house.common.util.HashUtils;
 import com.xunqi.house.web.util.UserHelper;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @Created with IntelliJ IDEA.
@@ -92,8 +94,8 @@ public class UserController {
                     username + "&" + ResultMsg.errorMsg("用户名或密码错误").asUrlParams();
         } else {
             HttpSession session = request.getSession(true);
-            session.setAttribute(CommonConstants.USER_ATTRIBUTE,user);
-            session.setAttribute(CommonConstants.PLAIN_USER_ATTRIBUTE,user);
+            session.setAttribute(CommonConstants.USER_ATTRIBUTE, user);
+            //session.setAttribute(CommonConstants.PLAIN_USER_ATTRIBUTE,user);
             return StringUtils.isNoneBlank(target) ? "redirect:" + target : "redirect:/index";
         }
     }
@@ -109,6 +111,64 @@ public class UserController {
         //清除session
         request.getSession().invalidate();
         return "redirect:/index";
+    }
+
+
+    //--------------------个人信息页----------------------
+
+    /**
+     * 1.能够提供页面消息
+     * 2.更新用户信息
+     * @param updateUser
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/accounts/profile")
+    public String profile(User updateUser,HttpServletRequest request,ModelMap modelMap) {
+
+        if (updateUser.getEmail() == null) {
+            return "user/accounts/profile";
+        }
+        //更新
+        int result = userService.updateUser(updateUser,updateUser.getEmail());
+
+        //查询
+        User query = new User();
+        query.setEmail(updateUser.getEmail());
+        List<User> userByQuery = userService.getUserByQuery(query);
+        request.getSession(true).setAttribute(CommonConstants.USER_ATTRIBUTE,userByQuery.get(0));
+
+        return "redirect:/accounts/profile?" + ResultMsg.successMsg("更新成功").asUrlParams();
+    }
+
+
+    /**
+     * 修改密码操作
+     * @param email
+     * @param password
+     * @param newPassword
+     * @param confirmPassword
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/accounts/changePassword")
+    public String changePassword(String email, String password, String newPassword,
+                                 String confirmPassword,ModelMap modelMap) {
+
+        User user = userService.auth(email, password);
+
+        //判断用户是否存在或者确认密码与新密码不一致，则提示用户并跳转到个人维护页面
+        if (user == null || !confirmPassword.equals(newPassword)) {
+            return "redirect:/accounts/profile?" + ResultMsg.errorMsg("密码错误").asUrlParams();
+        }
+
+
+        user.setPasswd(HashUtils.encryPassword(newPassword));
+        int result = userService.updateUser(user,user.getEmail());
+        if (result > 0) {
+            return "redirect:/accounts/profile?" + ResultMsg.successMsg("更新成功").asUrlParams();
+        }
+        return "redirct:/accounts/profile?" + ResultMsg.errorMsg("密码错误").asUrlParams();
     }
 
 

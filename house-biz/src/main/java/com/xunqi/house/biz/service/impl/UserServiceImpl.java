@@ -80,10 +80,16 @@ public class UserServiceImpl implements UserService {
 
         List<User> list = getUserByQuery(user);
 
-        return list.get(0);
+        if (list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
+
     }
 
-    private List<User> getUserByQuery(User user) {
+
+    @Override
+    public List<User> getUserByQuery(User user) {
 
         List<User> list = userMapper.selectUserByQuery(user);
         list.forEach(u ->{
@@ -91,6 +97,15 @@ public class UserServiceImpl implements UserService {
         });
 
         return list;
+    }
+
+    @Override
+    public int updateUser(User updateUser, String email) {
+        updateUser.setEmail(email);
+        BeanHelper.onUpdate(updateUser);
+        int result = userMapper.update(updateUser);
+
+        return result;
     }
 
 

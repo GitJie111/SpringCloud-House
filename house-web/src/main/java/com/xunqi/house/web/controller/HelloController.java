@@ -32,4 +32,8 @@ public class HelloController {
         return "hello";
     }
 
+    @RequestMapping("/index")
+    public String index() {
+        return "homepage/index";
+    }
 }

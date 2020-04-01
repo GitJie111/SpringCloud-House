@@ -39,4 +39,14 @@ public interface UserService {
      * @return
      */
     User auth(String username, String password);
+
+    /**
+     * 修改用户信息
+     * @param updateUser
+     * @param email
+     * @return
+     */
+    int updateUser(User updateUser, String email);
+
+    List<User> getUserByQuery(User query);
 }
