@@ -3,11 +3,14 @@ package com.xunqi.house.biz.service.impl;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.xunqi.house.biz.mapper.HouseMapper;
+import com.xunqi.house.biz.service.AgentService;
+import com.xunqi.house.biz.service.FileService;
 import com.xunqi.house.biz.service.HouseService;
+import com.xunqi.house.biz.service.MailService;
 import com.xunqi.house.common.page.PageData;
 import com.xunqi.house.common.page.PageParams;
-import com.xunqi.house.common.pojo.Community;
-import com.xunqi.house.common.pojo.House;
+import com.xunqi.house.common.pojo.*;
+import com.xunqi.house.common.util.BeanHelper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +31,15 @@ public class HouseServiceImpl implements HouseService {
 
     @Resource
     private HouseMapper houseMapper;
+
+    @Resource
+    private FileService fileService;
+
+    @Resource
+    private AgentService agentService;
+
+    @Resource
+    private MailService mailService;
 
     /**
      * 1.查询小区
@@ -62,6 +74,7 @@ public class HouseServiceImpl implements HouseService {
         return PageData.buildPage(houses,count,pageParams.getPageSize(),pageParams.getPageNum());
     }
 
+
     public List<House> queryAndSetImg(House query, PageParams pageParams) {
         List<House> houses = houseMapper.selectPageHouses(query, pageParams);
         houses.forEach(h ->{
@@ -75,4 +88,41 @@ public class HouseServiceImpl implements HouseService {
         });
         return houses;
     }
+
+
+    @Override
+    public House queryOneHouse(Long id) {
+        House query = new House();
+        query.setId(id);
+        //查询房屋信息，传入分页属性显示一条数据
+        List<House> houses = queryAndSetImg(query,PageParams.build(1,1));
+
+        //如果不为空则返回数据
+        if (!houses.isEmpty()) {
+            return houses.get(0);
+        }
+
+        return null;
+    }
+
+    @Override
+    public void addUserMsg(UserMsg userMsg) {
+
+        BeanHelper.onInsert(userMsg);
+
+        houseMapper.insertUserMsg(userMsg);
+
+        User agent = agentService.getAgentDetail(userMsg.getAgentId());
+
+        mailService.sendMail("来自用户" + userMsg.getEmail() + "的留言"
+                ,userMsg.getMsg(),agent.getEmail());
+
+    }
+
+    @Override
+    public HouseUser getHouseUser(Long houseId){
+        HouseUser houseUser =  houseMapper.selectSaleHouseUser(houseId);
+        return houseUser;
+    }
+
 }

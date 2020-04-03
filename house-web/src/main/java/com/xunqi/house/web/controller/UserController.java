@@ -27,11 +27,6 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "/")
-    public String login() {
-        return "user/accounts/signin";
-    }
-
     /**
      * 注册提交
      * 1.注册验证
@@ -96,7 +91,8 @@ public class UserController {
             HttpSession session = request.getSession(true);
             session.setAttribute(CommonConstants.USER_ATTRIBUTE, user);
             //session.setAttribute(CommonConstants.PLAIN_USER_ATTRIBUTE,user);
-            return StringUtils.isNoneBlank(target) ? "redirect:" + target : "redirect:/index";
+            //return StringUtils.isNoneBlank(target) ? "redirect:" + target : "redirect:/index";
+            return "redirect:/accounts/profile";
         }
     }
 

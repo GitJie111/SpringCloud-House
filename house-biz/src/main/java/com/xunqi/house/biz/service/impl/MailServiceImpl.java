@@ -19,6 +19,8 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
 
+import javax.annotation.Resource;
+
 
 /**
  * @Created with IntelliJ IDEA.
@@ -31,7 +33,7 @@ public class MailServiceImpl implements MailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Value("${domain.name}")

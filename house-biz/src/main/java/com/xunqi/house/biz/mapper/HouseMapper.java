@@ -1,9 +1,7 @@
 package com.xunqi.house.biz.mapper;
 
 import com.xunqi.house.common.page.PageParams;
-import com.xunqi.house.common.pojo.Community;
-import com.xunqi.house.common.pojo.House;
-import com.xunqi.house.common.pojo.User;
+import com.xunqi.house.common.pojo.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -48,4 +46,15 @@ public interface HouseMapper {
      * @return
      */
     List<Community> selectCommunity(Community community);
+
+
+    /**
+     * 新增信息
+     * @param userMsg
+     * @return
+     */
+    int insertUserMsg(UserMsg userMsg);
+
+
+    public HouseUser selectSaleHouseUser(@Param("id") Long houseId);
 }
