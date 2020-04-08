@@ -31,9 +31,4 @@ public class HelloController {
         modelMap.put("user",user);
         return "hello";
     }
-
-    @RequestMapping("/index")
-    public String index() {
-        return "homepage/index";
-    }
 }

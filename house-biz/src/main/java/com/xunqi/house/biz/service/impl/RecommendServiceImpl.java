@@ -72,5 +72,14 @@ public class RecommendServiceImpl implements RecommendService {
         return houseSort.sortedCopy(houses);
     }
 
+    @Override
+    public List<House> getLastest() {
+        House query = new House();
+        query.setSort("create_time");
+        List<House> houses = houseService.queryAndSetImg(query, new PageParams(8, 1));
+
+        return houses;
+    }
+
 
 }

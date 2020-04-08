@@ -21,4 +21,9 @@ public interface RecommendService {
 
     public List<House> getHotHouse(Integer size);
 
+    /**
+     * 获取信息房源
+     * @return
+     */
+    List<House> getLastest();
 }
