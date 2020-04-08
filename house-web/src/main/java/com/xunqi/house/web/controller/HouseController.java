@@ -2,6 +2,8 @@ package com.xunqi.house.web.controller;
 
 import com.xunqi.house.biz.service.AgentService;
 import com.xunqi.house.biz.service.HouseService;
+import com.xunqi.house.biz.service.RecommendService;
+import com.xunqi.house.common.constants.CommonConstants;
 import com.xunqi.house.common.page.PageData;
 import com.xunqi.house.common.page.PageParams;
 import com.xunqi.house.common.pojo.House;
@@ -12,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Created with IntelliJ IDEA.
@@ -27,6 +30,9 @@ public class HouseController {
     @Resource
     private AgentService agentService;
 
+    @Resource
+    private RecommendService recommendService;
+
     /**
      * 1.实现分页
      * 2.支持小区搜索、类型搜索
@@ -36,9 +42,11 @@ public class HouseController {
      */
     @RequestMapping(value = "/house/list")
     public String houseList(Integer pageSize, Integer pageNumber, House query, ModelMap modelMap) {
-
+        //查询分页房产信息
         PageData<House> housePageData = houseService.queryHouse(query, PageParams.build(pageSize, pageNumber));
-
+        //查询热门房产
+        List<House> hotHouses =  recommendService.getHotHouse(CommonConstants.RECOM_SIZE);
+        modelMap.put("recomHouses",hotHouses);
         modelMap.put("ps",housePageData);
         modelMap.put("vo",query);
 
@@ -57,10 +65,14 @@ public class HouseController {
         House house = houseService.queryOneHouse(id);
 
         HouseUser houseUser = houseService.getHouseUser(id);
-
+        recommendService.increase(id);
         if (houseUser.getUserId() != null && !houseUser.getUserId().equals(0)) {
             modelMap.put("agent",agentService.getAgentDetail(houseUser.getUserId()));
         }
+
+        //查询热门房产
+        List<House> hotHouses =  recommendService.getHotHouse(CommonConstants.RECOM_SIZE);
+        modelMap.put("recomHouses",hotHouses);
 
         modelMap.put("house",house);
 

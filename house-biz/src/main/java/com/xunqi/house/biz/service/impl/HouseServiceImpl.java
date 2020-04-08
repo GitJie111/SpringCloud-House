@@ -75,6 +75,7 @@ public class HouseServiceImpl implements HouseService {
     }
 
 
+    @Override
     public List<House> queryAndSetImg(House query, PageParams pageParams) {
         List<House> houses = houseMapper.selectPageHouses(query, pageParams);
         houses.forEach(h ->{

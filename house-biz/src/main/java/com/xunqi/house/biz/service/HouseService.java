@@ -25,6 +25,14 @@ public interface HouseService {
     PageData<House> queryHouse(House query, PageParams pageParams);
 
     /**
+     * 查询头像图片地址
+     * @param query
+     * @param pageParams
+     * @return
+     */
+    public List<House> queryAndSetImg(House query, PageParams pageParams);
+
+    /**
      * 根据id查询房屋信息
      * @param id
      * @return
