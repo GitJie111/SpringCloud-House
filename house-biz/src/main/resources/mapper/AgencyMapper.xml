@@ -35,4 +35,19 @@
             LIMIT #{pageParams.limit}
         </if>
     </select>
+
+    <select id="selectAgentCount" resultType="java.lang.Long">
+        SELECT COUNT(id)
+        FROM user
+        <where>
+            enable = 1 AND type = 2
+            <if test="user.id != null and user.id != 0">
+                AND id = #{user.id}
+            </if>
+            <if test="user.name != null and user.name != ''">
+                AND email = #{user.email}
+            </if>
+        </where>
+    </select>
+
 </mapper>

@@ -15,6 +15,18 @@ import java.util.List;
 @Mapper
 public interface AgencyMapper {
 
+    /**
+     * 多条件分页查询经纪人详情
+     * @param user
+     * @param pageParams
+     * @return
+     */
     List<User> selectAgent(@Param("user")User user, @Param("pageParams")PageParams pageParams);
 
+    /**
+     * 获取经纪人数量
+     * @param user
+     * @return
+     */
+    Long selectAgentCount(@Param("user") User user);
 }

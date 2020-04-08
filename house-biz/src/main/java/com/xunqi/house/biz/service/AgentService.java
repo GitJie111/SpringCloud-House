@@ -1,5 +1,7 @@
 package com.xunqi.house.biz.service;
 
+import com.xunqi.house.common.page.PageData;
+import com.xunqi.house.common.page.PageParams;
 import com.xunqi.house.common.pojo.User;
 
 /**
@@ -15,4 +17,11 @@ public interface AgentService {
      * @return
      */
     User getAgentDetail(Long userId);
+
+    /**
+     * 获取经纪人列表,分页查询
+     * @param pageParams
+     * @return
+     */
+    PageData<User> getAllAgent(PageParams pageParams);
 }

@@ -276,7 +276,7 @@
 <@common.js/>
 
 <!--[if gt IE 8]>
-<script type="text/javascript" src="/static//js/ie.js"></script>
+<script type="text/javascript" src="/static/assets/js/ie.js"></script>
 <![endif]-->
  <script  type="text/javascript" >
      

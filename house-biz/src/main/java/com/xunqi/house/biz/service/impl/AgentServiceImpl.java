@@ -2,6 +2,7 @@ package com.xunqi.house.biz.service.impl;
 
 import com.xunqi.house.biz.mapper.AgencyMapper;
 import com.xunqi.house.biz.service.AgentService;
+import com.xunqi.house.common.page.PageData;
 import com.xunqi.house.common.page.PageParams;
 import com.xunqi.house.common.pojo.User;
 import org.springframework.beans.factory.annotation.Value;
@@ -50,6 +51,7 @@ public class AgentServiceImpl implements AgentService {
         return null;
     }
 
+
     /**
      * 处理用户头像
      * @param userList
@@ -59,5 +61,20 @@ public class AgentServiceImpl implements AgentService {
         userList.forEach(i -> {
             i.setAvatar(imgPrefix + i.getAvatar());
         });
+    }
+
+    @Override
+    public PageData<User> getAllAgent(PageParams pageParams) {
+
+        //查询全部经纪人
+        List<User> agents = agencyMapper.selectAgent(new User(), pageParams);
+
+        //设置头像地址
+        setImg(agents);
+
+        //获取经纪人数量
+        Long count = agencyMapper.selectAgentCount(new User());
+
+        return PageData.buildPage(agents,count,pageParams.getPageSize(),pageParams.getPageNum());
     }
 }

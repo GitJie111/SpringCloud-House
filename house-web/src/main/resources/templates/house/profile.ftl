@@ -22,9 +22,9 @@
                         <a href="sign-in.html">Sign In</a>
                     </div>
                     <div class="language-bar">
-                        <a href="#" class="active"><img src="assets/img/flags/gb.png" alt=""></a>
-                        <a href="#"><img src="assets/img/flags/de.png" alt=""></a>
-                        <a href="#"><img src="assets/img/flags/es.png" alt=""></a>
+                        <a href="#" class="active"><img src="/static/assets/img/flags/gb.png" alt=""></a>
+                        <a href="#"><img src="/static/assets/img/flags/de.png" alt=""></a>
+                        <a href="#"><img src="/static/assets/img/flags/es.png" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="navbar-brand nav" id="brand">
-                        <a href="index-google-map-fullscreen.html"><img src="assets/img/logo.png" alt="brand"></a>
+                        <a href="index-google-map-fullscreen.html"><img src="/static/assets/img/logo.png" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -169,7 +169,7 @@
                                     <tbody>
                                     <tr>
                                         <td class="image">
-                                            <a href="property-detail.html"><img alt="" src="assets/img/properties/property-04.jpg"></a>
+                                            <a href="property-detail.html"><img alt="" src="/static/assets/img/properties/property-04.jpg"></a>
                                         </td>
                                         <td><div class="inner">
                                             <a href="property-detail.html"><h2>987 Cantebury Drive</h2></a>
@@ -186,7 +186,7 @@
                                     </tr>
                                     <tr>
                                         <td class="image">
-                                            <a href="property-detail.html"><img alt="" src="assets/img/properties/property-02.jpg"></a>
+                                            <a href="property-detail.html"><img alt="" src="/static/assets/img/properties/property-02.jpg"></a>
                                         </td>
                                         <td><div class="inner">
                                             <a href="property-detail.html"><h2>3398 Lodgeville Road</h2></a>
@@ -203,7 +203,7 @@
                                     </tr>
                                     <tr>
                                         <td class="image">
-                                            <a href="property-detail.html"><img alt="" src="assets/img/properties/property-01.jpg"></a>
+                                            <a href="property-detail.html"><img alt="" src="/static/assets/img/properties/property-01.jpg"></a>
                                         </td>
                                         <td><div class="inner">
                                             <a href="property-detail.html"><h2>1179 Stroop Hill Road</h2></a>
@@ -220,7 +220,7 @@
                                     </tr>
                                     <tr>
                                         <td class="image">
-                                            <a href="property-detail.html"><img alt="" src="assets/img/properties/property-06.jpg"></a>
+                                            <a href="property-detail.html"><img alt="" src="/static/assets/img/properties/property-06.jpg"></a>
                                         </td>
                                         <td><div class="inner">
                                             <a href="property-detail.html"><h2>1028 Henery Street</h2></a>
@@ -237,7 +237,7 @@
                                     </tr>
                                     <tr>
                                         <td class="image">
-                                            <a href="property-detail.html"><img alt="" src="assets/img/properties/property-07.jpg"></a>
+                                            <a href="property-detail.html"><img alt="" src="/static/assets/img/properties/property-07.jpg"></a>
                                         </td>
                                         <td><div class="inner">
                                             <a href="property-detail.html"><h2>4068 Diamond Street</h2></a>
@@ -254,7 +254,7 @@
                                     </tr>
                                     <tr>
                                         <td class="image">
-                                            <a href="property-detail.html"><img alt="" src="assets/img/properties/property-08.jpg"></a>
+                                            <a href="property-detail.html"><img alt="" src="/static/assets/img/properties/property-08.jpg"></a>
                                         </td>
                                         <td><div class="inner">
                                             <a href="property-detail.html"><h2>2088 May Street</h2></a>
@@ -313,7 +313,7 @@
                                 <div class="property small">
                                     <a href="property-detail.html">
                                         <div class="property-image">
-                                            <img alt="" src="assets/img/properties/property-06.jpg">
+                                            <img alt="" src="/static/assets/img/properties/property-06.jpg">
                                         </div>
                                     </a>
                                     <div class="info">
@@ -325,7 +325,7 @@
                                 <div class="property small">
                                     <a href="property-detail.html">
                                         <div class="property-image">
-                                            <img alt="" src="assets/img/properties/property-09.jpg">
+                                            <img alt="" src="/static/assets/img/properties/property-09.jpg">
                                         </div>
                                     </a>
                                     <div class="info">
@@ -375,15 +375,15 @@
     <!-- end Page Footer -->
 </div>
 
-<script type="text/javascript" src="assets/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/smoothscroll.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
-<script type="text/javascript" src="assets/js/retina-1.1.0.min.js"></script>
-<script type="text/javascript" src="assets/js/custom.js"></script>
+<script type="text/javascript" src="/static/assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/static/assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/assets/js/smoothscroll.js"></script>
+<script type="text/javascript" src="/static/assets/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="/static/assets/js/retina-1.1.0.min.js"></script>
+<script type="text/javascript" src="/static/assets/js/custom.js"></script>
 <!--[if gt IE 8]>
-<script type="text/javascript" src="assets/js/ie.js"></script>
+<script type="text/javascript" src="/static/assets/js/ie.js"></script>
 <![endif]-->
 
 </body>
