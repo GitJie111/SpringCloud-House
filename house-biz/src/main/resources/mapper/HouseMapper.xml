@@ -65,6 +65,8 @@
         </where>
     </sql>
 
+
+
     <select id="selectPageHouses" resultType="com.xunqi.house.common.pojo.House">
         select <include refid="houseField" />
         from house a
@@ -193,4 +195,23 @@
                   #{type}
             )
     </insert>
+
+
+    <update id="updateHouse">
+        UPDATE house
+        SET rating = #{rating}
+        WHERE id = #{id}
+    </update>
+
+
+    <delete id="deleteHouseUser">
+        DELETE FROM house_user
+        WHERE house_id = #{id} AND user_id = #{userId} AND type = #{type}
+    </delete>
+
+    <update id="downHouse">
+        UPDATE house
+        SET  state = 2
+        WHERE id = #{id}
+    </update>
 </mapper>

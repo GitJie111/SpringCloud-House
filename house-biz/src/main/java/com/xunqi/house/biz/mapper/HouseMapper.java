@@ -74,4 +74,28 @@ public interface HouseMapper {
      * @return
      */
     int insertHouseUser(HouseUser houseUser);
+
+    /**
+     * 更新星级
+     * @param updateHouse
+     */
+    int updateHouse(House updateHouse);
+
+    /**
+     * 删除收藏
+     * @param id
+     * @param userId
+     * @param type
+     * @return
+     */
+    int deleteHouseUser(@Param("id") Long id,
+                        @Param("userId") Long userId,
+                        @Param("type") Integer type);
+
+    /**
+     * 下架房源
+     * @param id
+     * @return
+     */
+    int downHouse(Long id);
 }

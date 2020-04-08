@@ -192,24 +192,24 @@
                                                     </form><!-- /#form-contact -->
                                                 </div>
                                     <header><h2 class="no-border">Comments</h2></header>
-                                    <ul class="comments">
-                                      <#list commentList as comment> 
-                                        <li class="comment" style="width: 830px;">
-                                            <figure>
-                                                <div class="image">
-                                                    <img alt="" src="${comment.avatar}">
-                                                </div>
-                                            </figure>
-                                            <div class="comment-wrapper">
-                                                <div class="name pull-left">${comment.userName}</div>
-                                                <span class="date pull-right"><span class="fa fa-calendar"></span>${(comment.createTime)?datetime}</span>
-                                                <p>${comment.content}
-                                                </p>
-                                                <hr>
-                                            </div>
-                                        </li>
-                                      </#list>
-                                    </ul>
+<#--                                    <ul class="comments">-->
+<#--                                      <#list commentList as comment> -->
+<#--                                        <li class="comment" style="width: 830px;">-->
+<#--                                            <figure>-->
+<#--                                                <div class="image">-->
+<#--                                                    <img alt="" src="${comment.avatar}">-->
+<#--                                                </div>-->
+<#--                                            </figure>-->
+<#--                                            <div class="comment-wrapper">-->
+<#--                                                <div class="name pull-left">${comment.userName}</div>-->
+<#--                                                <span class="date pull-right"><span class="fa fa-calendar"></span>${(comment.createTime)?datetime}</span>-->
+<#--                                                <p>${comment.content}-->
+<#--                                                </p>-->
+<#--                                                <hr>-->
+<#--                                            </div>-->
+<#--                                        </li>-->
+<#--                                      </#list>-->
+<#--                                    </ul>-->
                                 </section>
                             </div><!-- /.col-md-12 -->
                             

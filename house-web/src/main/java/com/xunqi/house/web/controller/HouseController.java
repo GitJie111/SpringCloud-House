@@ -5,14 +5,17 @@ import com.xunqi.house.biz.service.CityService;
 import com.xunqi.house.biz.service.HouseService;
 import com.xunqi.house.biz.service.RecommendService;
 import com.xunqi.house.common.constants.CommonConstants;
+import com.xunqi.house.common.enums.HouseUserType;
 import com.xunqi.house.common.page.PageData;
 import com.xunqi.house.common.page.PageParams;
 import com.xunqi.house.common.pojo.*;
+import com.xunqi.house.common.result.ResultMsg;
 import com.xunqi.house.web.interceptor.UserContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -140,5 +143,62 @@ public class HouseController {
         return "house/ownlist";
 
     }
+
+
+    //1.评分
+    @ResponseBody
+    @RequestMapping(value = "/house/rating")
+    public ResultMsg houseRate(Double rating,Long id) {
+        houseService.updateRating(id,rating);
+        return ResultMsg.successMsg("ok");
+    }
+
+
+    //2.收藏
+    @ResponseBody
+    @RequestMapping(value = "/house/bookmark")
+    public ResultMsg bookmark(Long id) {
+        User user = UserContext.getUser();
+        houseService.bindUser2House(id,user.getId(),true);
+        return ResultMsg.successMsg("ok");
+    }
+
+    //3.删除收藏
+    @ResponseBody
+    @RequestMapping(value = "/house/unbookmark")
+    public ResultMsg unbookmark(Long id) {
+        User user = UserContext.getUser();
+        houseService.unbindUser2House(id,user.getId(), HouseUserType.BOOKMARK);
+        return ResultMsg.successMsg("ok");
+    }
+
+    @RequestMapping(value = "/house/del")
+    public String delSale(Long id,String pageType) {
+        User user = UserContext.getUser();
+        houseService.unbindUser2House(id,
+                user.getId(),
+                pageType.equals("own") ? HouseUserType.SALE : HouseUserType.BOOKMARK);
+
+        return "redirect:/house/ownlist";
+    }
+
+
+    //4.收藏列表
+    @RequestMapping(value = "/house/bookmarked")
+    public String bookmarked(House house,
+                             @RequestParam(required = false,defaultValue = "3") Integer pageNum,
+                             @RequestParam(required = false,defaultValue = "1") Integer pageSize,
+                             ModelMap modelMap) {
+
+        User user = UserContext.getUser();
+        house.setBookmarked(true);
+        house.setUserId(user.getId());
+        PageData<House> housePageData = houseService.queryHouse(house, PageParams.build(pageSize, pageNum));
+        modelMap.put("ps",housePageData);
+        modelMap.put("pageType","book");
+
+        return "house/ownlist";
+    }
+
 
 }

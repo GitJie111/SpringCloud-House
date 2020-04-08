@@ -153,7 +153,9 @@ public class HouseServiceImpl implements HouseService {
         bindUser2House(house.getId(),user.getId(),false);
     }
 
-    private void bindUser2House(Long houseId, Long userId, boolean isCollect) {
+
+    @Override
+    public void bindUser2House(Long houseId, Long userId, boolean isCollect) {
         HouseUser existHouseUser = houseMapper.selectHouseUser(
                 userId,houseId,isCollect ? HouseUserType.BOOKMARK.value : HouseUserType.SALE.value);
 
@@ -169,4 +171,31 @@ public class HouseServiceImpl implements HouseService {
         houseMapper.insertHouseUser(houseUser);
     }
 
+
+    @Override
+    public void updateRating(Long id, Double rating) {
+        //先查询出指定数据
+        House house = queryOneHouse(id);
+        //获取到原来的星级
+        Double oldRating = house.getRating();
+        //计算平均星级,不允许评论的星级大于5
+        Double newRating = oldRating.equals(0D) ? rating : Math.min((oldRating + rating)/2,5);
+
+        House updateHouse = new House();
+        updateHouse.setId(id);
+        updateHouse.setRating(newRating);
+
+        //执行更新操作
+        BeanHelper.onUpdate(updateHouse);
+        houseMapper.updateHouse(updateHouse);
+    }
+
+    @Override
+    public void unbindUser2House(Long id, Long userId, HouseUserType type) {
+        if (type.equals(HouseUserType.SALE)) {
+            houseMapper.downHouse(id);
+        } else {
+            houseMapper.deleteHouseUser(id, userId, type.value);
+        }
+    }
 }

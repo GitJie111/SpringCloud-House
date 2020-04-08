@@ -1,5 +1,6 @@
 package com.xunqi.house.biz.service;
 
+import com.xunqi.house.common.enums.HouseUserType;
 import com.xunqi.house.common.page.PageData;
 import com.xunqi.house.common.page.PageParams;
 import com.xunqi.house.common.pojo.*;
@@ -60,4 +61,28 @@ public interface HouseService {
      * @param user
      */
     void addHouse(House house, User user);
+
+    /**
+     * 绑定用户信息
+     * @param houseId
+     * @param userId
+     * @param isCollect
+     */
+    public void bindUser2House(Long houseId, Long userId, boolean isCollect);
+
+    /**
+     * 更新星级
+     * @param id
+     * @param rating
+     */
+    void updateRating(Long id, Double rating);
+
+
+    /**
+     * 解绑收藏（删除收藏）
+     * @param id
+     * @param userId
+     * @param type
+     */
+    void unbindUser2House(Long id, Long userId, HouseUserType type);
 }
