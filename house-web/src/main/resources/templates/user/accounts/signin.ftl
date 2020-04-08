@@ -53,7 +53,7 @@
 
 <@common.js/>
 <!--[if gt IE 8]>
-<script type="text/javascript" src="/static/assets/js/ie.js"></script>
+<script type="text/javascript" src="/assets/js/ie.js"></script>
 <![endif]-->
  <script  type="text/javascript" >
        $(document).ready(function() {

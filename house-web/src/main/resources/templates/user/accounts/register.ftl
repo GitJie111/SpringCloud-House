@@ -37,15 +37,15 @@
                             </label>
                         </div>
                          <div id="agency" class="disabled">
-<#--                            <div class="form-group">-->
-<#--                                <label for="account-agency">选择经纪机构:</label>-->
+                            <div class="form-group">
+                                <label for="account-agency">选择经纪机构:</label>
 <#--                                <select name="agencyId" id="agencyId">-->
 <#--                                      <option value="0" >请选择经纪机构</option>-->
 <#--                                     <#list agencyList as agency>-->
 <#--                                        <option value="${agency.id}" >${agency.name}</option>-->
 <#--                                     </#list>-->
 <#--                                </select>-->
-<#--                            </div><!-- /.form-group &ndash;&gt;-->
+                            </div><!-- /.form-group -->
                         </div>
                         <hr>
                         <div class="form-group">

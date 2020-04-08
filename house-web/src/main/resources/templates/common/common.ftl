@@ -30,7 +30,7 @@
             <aside id="footer-main">
                 <div class="container">
                     <div class="row">
-
+                      
                         <div class="col-md-6 col-sm-6">
                             <article>
                                 <h3>关于我们</h3>
@@ -146,7 +146,7 @@
             </select>
         </div><!-- /.form-group -->
         <input type="text" value="${(vo.sort)!}" name=sort hidden="true">
-
+       
         <div class="form-group">
             <button type="submit" class="btn btn-default">搜索</button>
         </div><!-- /.form-group -->
@@ -160,7 +160,7 @@
         <div class="secondary-navigation">
             <div class="container">
                 <div class="contact">
-
+                    
                 </div>
                 <div class="user-area">
                     <div class="actions">
