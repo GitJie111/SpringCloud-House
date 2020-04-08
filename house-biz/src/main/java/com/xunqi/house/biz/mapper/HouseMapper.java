@@ -35,10 +35,10 @@ public interface HouseMapper {
 
     /**
      * 添加房屋信息
-     * @param account
+     * @param house
      * @return
      */
-    public int insert(User account);
+    public int insert(House house);
 
     /**
      * 查询小区信息
@@ -54,7 +54,24 @@ public interface HouseMapper {
      * @return
      */
     int insertUserMsg(UserMsg userMsg);
-
-
+    
     public HouseUser selectSaleHouseUser(@Param("id") Long houseId);
+
+    /**
+     * 查询房屋关联用户
+     * @param userId
+     * @param houseId
+     * @param type
+     * @return
+     */
+    HouseUser selectHouseUser(@Param("userId") Long userId,
+                              @Param("houseId")Long houseId,
+                              @Param("type") Integer type);
+
+    /**
+     * 新增房屋用户信息表
+     * @param houseUser
+     * @return
+     */
+    int insertHouseUser(HouseUser houseUser);
 }

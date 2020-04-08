@@ -26,20 +26,39 @@
     </sql>
 
     <sql id="houseCondition">
+        <if test="house.userId != null and house.userId != 0">
+            inner join (select house_id,user_id from house_user
+            <where>
+                user_id = #{house.userId}
+                <if test="house.bookmarked != null and house.bookmarked == true">
+                    and type = 2
+                </if>
+                <if test="house.bookmarked != null and house.bookmarked == false">
+                    and type =1
+                </if>
+            </where>
+            ) b
+            on a.id = b.house_id
+        </if>
         <where>
-            <if test="house.id != null and house.id != 0">
-                 a.id = #{house.id}
+            <!-- 这里要注意只显示上架的房产 -->
+            state = 1
+            <if test="house.id !=null and house.id !=0">
+                and a.id = #{house.id}
             </if>
             <if test="house.type != null">
-                AND a.type = #{house.type}
+                and a.type = #{house.type}
             </if>
-            <if test="house.name != null and house.name != ''">
-                <bind name="pattern1" value="'%' + house.name + '%'"/>
-                AND a.name LIKE #{pattern1}
+            <if test="house.communityId != null" >
+                and a.community_id = #{house.communityId}
             </if>
-            <if test="house.ids">
-                AND a.id IN
-                <foreach collection="house.ids" item="item" index="index" open="(" close=")" separator=",">
+            <if test="house.name != null and house.name != '' " >
+                <bind name="pattern1" value = "'%' + house.name + '%'" />
+                and a.name like #{pattern1}
+            </if>
+            <if test="house.ids != null and house.ids.size() > 0">
+                and a.id in
+                <foreach collection="house.ids" item="item" index="index" open="(" close=")" separator="," >
                     #{item}
                 </foreach>
             </if>
@@ -77,7 +96,7 @@
     </select>
 
     <insert id="insert"  useGeneratedKeys="true" keyProperty="id">
-        insert into house(
+        INSERT INTO house(
             type,
             name,
             price,
@@ -96,7 +115,7 @@
             address,
             state
         )
-            value(
+            VALUES (
                   #{type},
                   #{name},
                   #{price},
@@ -149,11 +168,29 @@
             )
     </insert>
 
+
     <select id="selectSaleHouseUser" resultType="com.xunqi.house.common.pojo.HouseUser">
         SELECT id,house_id,user_id,create_time,type
         FROM house_user
         WHERE house_id = #{id} AND type = 1
         LIMIT 1
     </select>
+    <select id="selectHouseUser" resultType="com.xunqi.house.common.pojo.HouseUser">
+        SELECT id, house_id, user_id, create_time, type
+        FROM house_user
+        WHERE house_id = #{houseId} AND user_id = #{userId} AND type = #{type}
+    </select>
 
+    <insert id="insertHouseUser">
+        INSERT INTO house_user (house_id,
+                                user_id,
+                                create_time,
+                                type)
+            VALUES (
+                  #{houseId},
+                  #{userId},
+                  #{createTime},
+                  #{type}
+            )
+    </insert>
 </mapper>

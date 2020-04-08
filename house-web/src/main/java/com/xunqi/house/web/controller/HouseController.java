@@ -1,17 +1,18 @@
 package com.xunqi.house.web.controller;
 
 import com.xunqi.house.biz.service.AgentService;
+import com.xunqi.house.biz.service.CityService;
 import com.xunqi.house.biz.service.HouseService;
 import com.xunqi.house.biz.service.RecommendService;
 import com.xunqi.house.common.constants.CommonConstants;
 import com.xunqi.house.common.page.PageData;
 import com.xunqi.house.common.page.PageParams;
-import com.xunqi.house.common.pojo.House;
-import com.xunqi.house.common.pojo.HouseUser;
-import com.xunqi.house.common.pojo.UserMsg;
+import com.xunqi.house.common.pojo.*;
+import com.xunqi.house.web.interceptor.UserContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -32,6 +33,9 @@ public class HouseController {
 
     @Resource
     private RecommendService recommendService;
+
+    @Resource
+    private CityService cityService;
 
     /**
      * 1.实现分页
@@ -91,6 +95,50 @@ public class HouseController {
         houseService.addUserMsg(userMsg);
 
         return "redirect:/house/detail?id=" + userMsg.getHouseId();
+    }
+
+
+    @RequestMapping(value = "/house/toAdd")
+    public String toAdd(ModelMap modelMap) {
+        List<City> allCitys = cityService.getAllCitys();
+        List<Community> allCommunitys = houseService.getAllCommunitys();
+        modelMap.put("citys",allCitys);
+        modelMap.put("communitys",allCommunitys);
+
+        return "house/add";
+    }
+
+    /**
+     * 获取用户
+     * 设置房产状态（上线）
+     * 添加房产
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/house/add")
+    public String doAdd(House house,ModelMap modelMap) {
+        //获取用户信息
+        User user = UserContext.getUser();
+
+        //设置房产状态
+        house.setState(CommonConstants.HOUSE_STATE_UP);
+
+        //添加房产信息
+        houseService.addHouse(house,user);
+        return "redirect:/house/ownlist";
+    }
+
+    @RequestMapping(value = "/house/ownlist")
+    public String ownlist(House house,
+                          @RequestParam(required = false,defaultValue = "3") Integer pageNum,
+                          @RequestParam(required = false,defaultValue = "1") Integer pageSize, ModelMap modelMap) {
+        User user = UserContext.getUser();
+        house.setUserId(house.getId());
+        house.setBookmarked(false);
+        modelMap.put("ps",houseService.queryHouse(house,PageParams.build(pageSize,pageNum)));
+        modelMap.put("pageType","own");
+        return "house/ownlist";
+
     }
 
 }

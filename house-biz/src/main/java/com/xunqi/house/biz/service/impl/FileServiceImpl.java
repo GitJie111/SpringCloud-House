@@ -38,8 +38,9 @@ public class FileServiceImpl implements FileService {
             if (!file.isEmpty()) {
                 try {
                     localFile =  saveToLocal(file, filePath);
+                    String fileName = files.get(0).getOriginalFilename();
                     String path = StringUtils.substringAfterLast(localFile.getAbsolutePath(), filePath);
-                    paths.add(path);
+                    paths.add(fileName);
                 } catch (IOException e) {
                     throw new IllegalArgumentException(e);
                 }

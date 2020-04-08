@@ -1,5 +1,6 @@
 package com.xunqi.house.biz.service.impl;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.xunqi.house.biz.mapper.HouseMapper;
@@ -7,10 +8,12 @@ import com.xunqi.house.biz.service.AgentService;
 import com.xunqi.house.biz.service.FileService;
 import com.xunqi.house.biz.service.HouseService;
 import com.xunqi.house.biz.service.MailService;
+import com.xunqi.house.common.enums.HouseUserType;
 import com.xunqi.house.common.page.PageData;
 import com.xunqi.house.common.page.PageParams;
 import com.xunqi.house.common.pojo.*;
 import com.xunqi.house.common.util.BeanHelper;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -124,6 +127,46 @@ public class HouseServiceImpl implements HouseService {
     public HouseUser getHouseUser(Long houseId){
         HouseUser houseUser =  houseMapper.selectSaleHouseUser(houseId);
         return houseUser;
+    }
+
+    @Override
+    public List<Community> getAllCommunitys() {
+        Community community = new Community();
+        List<Community> communities = houseMapper.selectCommunity(community);
+        return communities;
+    }
+
+    @Override
+    public void addHouse(House house, User user) {
+        //判断是否传来房产图片信息
+        if (CollectionUtils.isNotEmpty(house.getHouseFiles())) {
+            String images = Joiner.on(",")
+                    .join(fileService.getImgPaths(house.getHouseFiles()));
+            house.setImages(images);
+        }
+        if (CollectionUtils.isNotEmpty(house.getFloorPlanFiles())) {
+            String images = Joiner.on(",").join(fileService.getImgPaths(house.getFloorPlanFiles()));
+            house.setFloorPlan(images);
+        }
+        BeanHelper.onInsert(house);
+        houseMapper.insert(house);
+        bindUser2House(house.getId(),user.getId(),false);
+    }
+
+    private void bindUser2House(Long houseId, Long userId, boolean isCollect) {
+        HouseUser existHouseUser = houseMapper.selectHouseUser(
+                userId,houseId,isCollect ? HouseUserType.BOOKMARK.value : HouseUserType.SALE.value);
+
+        if (existHouseUser != null) {
+            return;
+        }
+        HouseUser houseUser = new HouseUser();
+        houseUser.setHouseId(houseId);
+        houseUser.setUserId(userId);
+        houseUser.setType(isCollect ? HouseUserType.BOOKMARK.value : HouseUserType.SALE.value);
+        BeanHelper.setDefaultProp(houseUser,HouseUser.class);
+        BeanHelper.onInsert(houseUser);
+        houseMapper.insertHouseUser(houseUser);
     }
 
 }

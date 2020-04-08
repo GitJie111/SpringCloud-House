@@ -6,6 +6,7 @@ import com.xunqi.house.biz.service.HouseService;
 import com.xunqi.house.biz.service.RecommendService;
 import com.xunqi.house.common.page.PageParams;
 import com.xunqi.house.common.pojo.House;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
  * @create: 2020-04-08 10:35
  **/
 @Service("recommendService")
+@Slf4j
 public class RecommendServiceImpl implements RecommendService {
 
     private static final String HOT_HOUSE_KEY = "hot_house";
@@ -39,14 +41,18 @@ public class RecommendServiceImpl implements RecommendService {
 
     @Override
     public List<Long> getHot() {
-        Jedis jedis = new Jedis("localhost");
-        jedis.auth("123456");
+        try {
+            Jedis jedis = new Jedis("127.0.0.1");
+            jedis.auth("123456");
+            Set<String> idSet = jedis.zrevrange(HOT_HOUSE_KEY, 0, -1);
+            jedis.close();
+            List<Long> ids = idSet.stream().map(Long::parseLong).collect(Collectors.toList());
+            return ids;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return Lists.newArrayList();
+        }
 
-        Set<String> idSet = jedis.zrevrange(HOT_HOUSE_KEY, 0, -1);
-        jedis.close();
-
-        List<Long> ids = idSet.stream().map(Long::parseLong).collect(Collectors.toList());
-        return ids;
     }
 
     @Override
